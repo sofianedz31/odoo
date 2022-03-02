@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    
+    
+
+    <record id="report_property_offers_actions" model="ir.actions.report">
+        <field name="name">report action property offers </field>
+        <field name="model">estate.property</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">estate.report_property_offers_template</field>
+        <field name="report_file">estate.report_property_offers_template</field>
+        <field name="print_report_name">'Registration Event - %s' % (object.name or 'Attendee').replace('/','')</field>
+        
+        <field name="binding_model_id" ref="model_estate_property"/> 
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="user_template_action" model="ir.actions.report">
+        <field name="name">report action property users </field>
+        <field name="model">res.users</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">estate.estate_user_template</field>
+        <field name="report_file">estate.estate_user_template</field>
+        <field name="print_report_name">'Registration Event - %s' % (object.name or 'Attendee').replace('/','')</field>
+        
+        <field name="binding_model_id" ref="model_res_users"/> 
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

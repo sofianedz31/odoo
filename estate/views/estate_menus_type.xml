@@ -4,11 +4,9 @@
          <menuitem id="estate_advertisments_menu" name="Advertisements">
              <menuitem id="estate_property_menu" action="estate_property_action" sequence="1"/>
         </menuitem>
-        <menuitem id="estate_settings_menu" name="Settings" groups="estate_group_manager">
-            <menuitem id="estate_property_types_menu" action="estate_property_type_action" sequence="2" />
-            <menuitem id="estate_property_tag_menu" action="estate_property_tag_action" sequence="3"/>
+        <menuitem id="estate_settings_menu" name="Settings">
+            <menuitem id="estate_property_menu" action="estate_property_action" sequence="2"/>
        </menuitem>
+     
     </menuitem>
-       
-
     </odoo>

@@ -21,14 +21,14 @@
 
                             <h3><field name="name"/></h3> 
 
-                            <label>Expected price: </label><field name="expected_price"  />
+                            <label for="expected_price">Expected price: </label><field name="expected_price"  />
 
                             <div t-if="record.state.raw_value == 'offer_received'">
-                                <label>Best price : </label><field name="best_price"/>
+                                <label for="best_price">Best price : </label><field name="best_price"/>
                             </div>
 
                             <div t-if="record.state.raw_value == 'offer_accepted'">
-                                <label> Selling price: </label> <field name="selling_price" />
+                                <label for="selling_price"> Selling price: </label> <field name="selling_price" />
                             </div>
 
                           
@@ -54,6 +54,7 @@
                 
                 
                 <field name="name" />
+                <field name="company_id" />
                 <field name="tag_ids" widget="many2many_tags" />
                 <field name="postcode" />
                 <field name="bedrooms" />
@@ -88,6 +89,8 @@
                     <h1>
                         <field name="name" />
                     </h1>
+                    <field name="company_id" />
+
                      <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <group>
                         <group>

@@ -19,6 +19,7 @@ class Property(models.Model):
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer()
     facades = fields.Integer()
+
     garage = fields.Boolean()
 
     garden = fields.Boolean('garden')
@@ -40,6 +41,7 @@ class Property(models.Model):
     offer_ids = fields.One2many('estate.property.offer', 'property_id')
     total_area = fields.Float(compute="_compute_total_area")
     best_price = fields.Float(compute="_compute_best_price")
+    company_id = fields.Many2one('res.company',default=lambda self: self.env.user.company_id,required=True)
 
     @api.depends('garden_area', 'living_area')
     def _compute_total_area(self):
@@ -68,8 +70,10 @@ class Property(models.Model):
 
     def action_sold(self):
         for property in self:
+            if property.state!="offer_accepted":
+                raise exceptions.UserError("no accepted offers on it")
 
-            if property.state == "canceled":
+            elif property.state == "canceled":
                 raise exceptions.UserError(
                     ' a sold property cannot be canceled.')
             property.state = "sold"

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    
+    <record id="big_villa_estate" model="estate.property">
+        <field name="name">Big Villa</field>
+        <field name="state">sold</field>
+        <field name="expected_price">2000</field>
+        
+        <field name="bedrooms">6</field>
+        <field name="postcode">12345</field>
+        <field name="garage">True</field>
+        <field name="garden_orientatin">south</field>
+        <field name="description">A nice and big villa </field>
+        <field name="date_availability">2020-02-02</field>
+        <field name="selling_price">0</field>
+        <field name="living_area">100</field>
+        <field name="facades">4</field>
+        <field name="garden">True</field>
+        <field name="garden_area">100000</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="property_type_id" ref="residential_type"/>
+    
+        
+    </record>
+
+
+    <record id="new_villa_estate" model="estate.property">
+        <field name="name">New Villa</field>
+        <field name="state">new</field>
+        <field name="expected_price">50000</field>
+        
+        <field name="bedrooms">8</field>
+        <field name="postcode">1238545</field>
+        <field name="garage">True</field>
+        <field name="garden_orientatin">south</field>
+        <field name="description">A nice and new villa </field>
+        <field name="date_availability">2020-02-02</field>
+        <field name="selling_price">0</field>
+        <field name="living_area">200</field>
+        <field name="facades">8</field>
+        <field name="garden">True</field>
+        <field name="garden_area">2000</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="property_type_id" ref="residential_type"/>
+    
+        
+    </record>
+
+
+
+    <record id="big_villa_estate_with_offers" model="estate.property">
+        <field name="offer_ids" eval="[
+        (0,0,{
+            'price': 55000,
+            'validity': 14,
+            'partner_id' : ref('base.res_partner_12')
+        })
+        ]"/>
+        <field name="name">Villa_Oran</field>
+        <field name="state">canceled</field>
+        <field name="expected_price">2000</field>
+        
+        <field name="bedrooms">6</field>
+        <field name="postcode">12345</field>
+        <field name="garage">True</field>
+        <field name="garden_orientatin">south</field>
+        <field name="description">A nice and big villa </field>
+        <field name="date_availability">2020-02-02</field>
+        <field name="selling_price">0</field>
+        <field name="living_area">100</field>
+        <field name="facades">4</field>
+        <field name="garden">True</field>
+        <field name="garden_area">100000</field>
+        <field name="company_id" ref="base.main_company" />
+        <field name="property_type_id" ref="residential_type"/>
+    </record>
+    
+    <record id="big_villa_offer_estate" model="estate.property.offer">
+
+        
+   
+        <field name="price">2000</field>        
+        <field name="partner_id" ref="base.res_partner_12" />
+        <field name="property_id" ref="big_villa_estate"/>
+        <field name="validity">14</field>
+
+        
+    </record>
+    <record id="big_villa_offer_azure_estate_partner4" model="estate.property.offer">
+        
+        <field name="price">500701</field>        
+        <field name="partner_id" ref="base.res_partner_4" />
+        <field name="property_id" ref="big_villa_estate_with_offers"/>
+        <field name="validity">14</field>
+
+        
+    </record>
+
+    <record id="big_villa_offer_azure_estate_partner" model="estate.property.offer">
+        
+        <field name="price">5000</field>        
+        <field name="partner_id" ref="base.res_partner_12" />
+        <field name="property_id" ref="big_villa_estate_with_offers"/>
+        <field name="validity">14</field>
+
+        
+    </record>
+
+
+    <function model="estate.property.offer" name="action_accepted">
+        <value eval="[ref('big_villa_offer_estate')]"/>
+    </function>
+
+    <function model="estate.property.offer" name="action_refused">
+        <value eval="[ref('big_villa_offer_azure_estate_partner')]"/>
+    </function>
+    <function model="estate.property" name="action_sold">
+        <value eval="[ref('big_villa_estate')]"/>
+    </function>
+    
+    
+    
+
+</data>
+
+        
+        <!-- <record id="home_trailer" model="estate.property">
+            <field name="name">Trailer home</field>
+            <field name="state">Canceled</field>
+            <field name="description">Home in a trailer park</field>
+            <field name="postcode">54321</field>
+            <field name="date_availability">1970-01-01</field>
+            <field name="expected_price">100000</field>
+            <field name="company_id" ref="base.main_company" />
+            <field name="selling_price">120000</field>
+            <field name="bedrooms">1</field>
+            <field name="living_area">10</field>
+            <field name="facades">4</field>
+            <field name="garage">False</field>
+
+        </record> -->
+
+    
+
+</odoo>

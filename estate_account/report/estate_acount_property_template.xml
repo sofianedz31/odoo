@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <template id="inherit_estate_property_details_template" inherit_id="estate.estate_property_details_template">
+       <xpath expr="//table[1]" position="before">
+        
+        <t t-if="property.move_id">
+
+            <h2>
+                invoice has already created
+            </h2>
+            
+        </t>
+        
+
+
+           
+       </xpath>
+   </template>
+
+   
+
+</odoo>
